@@ -1,0 +1,152 @@
+
+.app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 255px;
+  height: 100vh;
+  padding: 27px 18px;
+  display: flex;
+  flex-direction: column;
+  background: #111827;
+  color: white;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 35px;
+}
+
+.sidebar-logo {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #315fe8;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.sidebar-brand h2 {
+  margin: 0 0 4px;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.sidebar-brand span {
+  color: #94a3b8;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.sidebar-section-label {
+  padding: 0 12px;
+  margin-bottom: 12px;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 14px;
+  border-radius: 9px;
+  color: #aeb9ca;
+  font-size: 13px;
+  font-weight: 550;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background: #263247;
+  color: white;
+}
+
+.sidebar-link.active {
+  background: #315fe8;
+  color: white;
+}
+
+.sidebar-icon {
+  width: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.sidebar-help {
+  padding: 17px;
+  border: 1px solid #29364a;
+  border-radius: 12px;
+  background: #1b2638;
+}
+
+.sidebar-help > span {
+  color: #60a5fa;
+  font-size: 20px;
+}
+
+.sidebar-help strong {
+  display: block;
+  margin-top: 9px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.sidebar-help p {
+  margin-bottom: 0;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.sidebar-version {
+  margin: 22px 0 0;
+  color: #64748b;
+  text-align: center;
+  font-size: 10px;
+}
+
+@media (max-width: 650px) {
+  .app-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .sidebar-brand {
+    padding-bottom: 15px;
+  }
+
+  .sidebar-section-label,
+  .sidebar-bottom {
+    display: none;
+  }
+
+  .sidebar-navigation {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .sidebar-link {
+    flex-shrink: 0;
+    padding: 10px 12px;
+  }
+}
