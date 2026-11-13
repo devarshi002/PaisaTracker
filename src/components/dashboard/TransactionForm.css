@@ -1,0 +1,74 @@
+
+/* Transaction Form */
+
+.form-panel {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 24px 0;
+  padding: 24px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.form-panel h3 {
+  margin: 0 0 20px;
+  font-size: 20px;
+}
+
+.transaction-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.transaction-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.transaction-form input,
+.transaction-form select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  color: #172033;
+  font-size: 14px;
+  outline: none;
+}
+
+.transaction-form input:focus,
+.transaction-form select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.transaction-form button {
+  align-self: end;
+  min-height: 42px;
+}
+
+@media (max-width: 900px) {
+  .transaction-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .transaction-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-panel {
+    padding: 16px;
+  }
+}
