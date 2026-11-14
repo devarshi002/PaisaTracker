@@ -332,3 +332,27 @@
     width: calc(100% - 30px);
   }
 }
+
+
+.forgot-password-link {
+  color: #6555dc;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+
+.auth-error {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.auth-success {
+  color: #16a34a;
+  font-size: 13px;
+  margin-top: 12px;
+}

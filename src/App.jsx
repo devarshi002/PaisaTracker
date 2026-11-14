@@ -13,6 +13,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 import "./App.css";
 
@@ -276,6 +278,11 @@ export default function App() {
         />
 
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route
+  path="/forgot-password"
+  element={session ? <Navigate to="/dashboard" replace /> : <ForgotPassword />}
+/>
+<Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );
