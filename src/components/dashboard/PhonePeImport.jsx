@@ -4,6 +4,7 @@ import { parsePhonePeCsv } from "../../lib/phonePeCsv";
 import {
   getExistingPhonePeTransactionIds,
   importPhonePeTransactions,
+  clearPhonePeTransactions,
 } from "../../lib/transactions";
 import "./PhonePeImport.css";
 
@@ -20,6 +21,7 @@ export default function PhonePeImport({ walletId, onImported }) {
   const [fileName, setFileName] = useState("");
   const [loading, setLoading] = useState(false);
   const [importing, setImporting] = useState(false);
+  const [clearing, setClearing] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -115,6 +117,37 @@ export default function PhonePeImport({ walletId, onImported }) {
     }
   }
 
+  async function handleClearImportedData() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete ALL PhonePe-imported transactions from this wallet? Manually added transactions will not be deleted. This action cannot be undone."
+    );
+
+    if (!confirmed) return;
+
+    setClearing(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const deletedCount = await clearPhonePeTransactions(walletId);
+
+      setTransactions([]);
+      setFileName("");
+
+      setSuccess(
+        `Successfully cleared ${deletedCount} PhonePe-imported transactions. You can upload your statement again.`
+      );
+
+      if (onImported) {
+        await onImported();
+      }
+    } catch (err) {
+      setError(err.message || "Unable to clear imported transactions.");
+    } finally {
+      setClearing(false);
+    }
+  }
+
   const totalIncome = transactions
     .filter((item) => item.kind === "income")
     .reduce((sum, item) => sum + Number(item.amount), 0);
@@ -128,6 +161,8 @@ export default function PhonePeImport({ walletId, onImported }) {
   ).length;
 
   const newCount = transactions.length - duplicateCount;
+
+  const busy = loading || importing || clearing;
 
   return (
     <section className="phonepe-import">
@@ -147,7 +182,7 @@ export default function PhonePeImport({ walletId, onImported }) {
           type="file"
           accept=".csv,text/csv"
           onChange={handleFileChange}
-          disabled={loading || importing}
+          disabled={busy}
         />
       </label>
 
@@ -253,7 +288,7 @@ export default function PhonePeImport({ walletId, onImported }) {
             type="button"
             className="phonepe-import-button"
             onClick={handleImport}
-            disabled={importing || loading || newCount === 0}
+            disabled={busy || newCount === 0}
           >
             {importing
               ? "Importing..."
@@ -265,6 +300,25 @@ export default function PhonePeImport({ walletId, onImported }) {
           </p>
         </>
       )}
+
+      <div className="phonepe-clear-section">
+        <div>
+          <strong>Start fresh?</strong>
+          <p>
+            Clear all PhonePe-imported transactions from this wallet
+            and upload your statement again.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          className="phonepe-clear-button"
+          onClick={handleClearImportedData}
+          disabled={busy || !walletId}
+        >
+          {clearing ? "Clearing..." : "Clear Imported Data"}
+        </button>
+      </div>
     </section>
   );
 }

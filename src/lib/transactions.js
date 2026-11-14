@@ -51,7 +51,6 @@ export async function getExistingPhonePeTransactionIds(
 
   const existingIds = [];
 
-  // Query in batches to avoid very large requests
   for (let i = 0; i < transactionIds.length; i += 500) {
     const batch = transactionIds.slice(i, i + 500);
 
@@ -124,7 +123,46 @@ export async function importPhonePeTransactions(walletId, transactions) {
   };
 }
 
-// Delete a transaction
+// Clear only PhonePe-imported transactions for a wallet
+export async function clearPhonePeTransactions(walletId) {
+  if (!walletId) {
+    throw new Error("Wallet not found.");
+  }
+
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError) throw userError;
+  if (!user) throw new Error("Please login first");
+
+  // Fetch matching records first so we can report the deletion count
+  const { data: existingRecords, error: fetchError } = await supabase
+    .from("transactions")
+    .select("id")
+    .eq("wallet_id", walletId)
+    .eq("source", "phonepe");
+
+  if (fetchError) throw fetchError;
+
+  if (!existingRecords || existingRecords.length === 0) {
+    return 0;
+  }
+
+  // Delete only records imported from PhonePe in this wallet
+  const { error: deleteError } = await supabase
+    .from("transactions")
+    .delete()
+    .eq("wallet_id", walletId)
+    .eq("source", "phonepe");
+
+  if (deleteError) throw deleteError;
+
+  return existingRecords.length;
+}
+
+// Delete an individual transaction
 export async function deleteTransaction(transactionId) {
   const { error } = await supabase
     .from("transactions")
