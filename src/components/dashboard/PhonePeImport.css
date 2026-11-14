@@ -196,3 +196,84 @@
     align-items: flex-start;
   }
 }
+
+
+/* Duplicate detection and import status */
+
+.phonepe-import-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 16px 0;
+  color: #475569;
+  font-size: 14px;
+}
+
+.phonepe-new {
+  color: #15803d;
+  background: #dcfce7;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.phonepe-duplicate {
+  color: #b45309;
+  background: #fef3c7;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Import button */
+
+.phonepe-import-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 13px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #635bff;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.phonepe-import-button:hover:not(:disabled) {
+  background: #5145d8;
+}
+
+.phonepe-import-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Success message */
+
+.phonepe-success {
+  margin-top: 14px !important;
+  color: #15803d !important;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px !important;
+  font-weight: 600;
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 650px) {
+  .phonepe-import-counts {
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  .phonepe-import-button {
+    padding: 14px;
+  }
+}

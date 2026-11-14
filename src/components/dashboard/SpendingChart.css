@@ -158,3 +158,23 @@
     font-size: 14px;
   }
 }
+
+
+
+/* Force correct Income and Expenses bar colors */
+
+.spending-chart .chart-bar.income-chart-bar {
+  background-color: #16a36a !important;
+  opacity: 1;
+}
+
+.spending-chart .chart-bar.expense-chart-bar {
+  background-color: #ed6464 !important;
+  opacity: 1;
+}
+
+/* Keep selected month highlight separate from bar colors */
+
+.spending-chart .selected-month .chart-bar-group {
+  background-color: #f3f6ff;
+}

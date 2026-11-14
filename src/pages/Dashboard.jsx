@@ -324,7 +324,11 @@ export default function Dashboard({ session }) {
               )}
 
               {/* PhonePe CSV Import */}
-              <PhonePeImport />
+              {/* PhonePe CSV Import */}
+<PhonePeImport
+  walletId={wallet?.id}
+  onImported={loadDashboard}
+/>
 
             </section>
 
