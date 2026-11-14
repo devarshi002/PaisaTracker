@@ -1,0 +1,98 @@
+
+.budget-form {
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.budget-form-heading h3 {
+  margin: 0 0 6px;
+  color: #172033;
+}
+
+.budget-form-heading p {
+  margin: 0;
+  color: #778096;
+  font-size: 13px;
+}
+
+.budget-form-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: end;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.budget-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.budget-field label {
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.budget-field input,
+.budget-field select {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #dce1eb;
+  border-radius: 9px;
+  background: #fff;
+  color: #172033;
+  font-size: 14px;
+  outline: none;
+}
+
+.budget-field input:focus,
+.budget-field select:focus {
+  border-color: #635bff;
+  box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.1);
+}
+
+.budget-submit-button {
+  min-height: 44px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 9px;
+  background: #635bff;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.budget-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.budget-form-error,
+.budget-form-success {
+  margin: 14px 0 0;
+  font-size: 13px;
+}
+
+.budget-form-error {
+  color: #dc2626;
+}
+
+.budget-form-success {
+  color: #15803d;
+}
+
+@media (max-width: 700px) {
+  .budget-form-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .budget-submit-button {
+    width: 100%;
+  }
+}

@@ -15,6 +15,7 @@ import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import Budgets from "./pages/Budgets";
 
 import "./App.css";
 
@@ -283,7 +284,18 @@ export default function App() {
   element={session ? <Navigate to="/dashboard" replace /> : <ForgotPassword />}
 />
 <Route path="/reset-password" element={<ResetPassword />} />
+
+<Route
+  path="/budgets"
+  element={
+    <ProtectedRoute session={session} loading={loading}>
+      <Budgets />
+    </ProtectedRoute>
+  }
+/>
       </Routes>
+
+      
     </BrowserRouter>
   );
 }
