@@ -1,6 +1,8 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import "./Auth.css";
 
 export default function Signup() {
   const [name, setName] = useState("");
@@ -8,75 +10,167 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   async function handleSignup(e) {
     e.preventDefault();
     setLoading(true);
     setMessage("");
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { full_name: name },
-      },
-    });
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { full_name: name },
+        },
+      });
 
-    setLoading(false);
+      if (error) {
+        setMessage(error.message);
+        return;
+      }
 
-    if (error) {
-      setMessage(error.message);
-      return;
+      setMessage(
+        data.session
+          ? "Account created successfully!"
+          : "Account created! Please check your email to verify it."
+      );
+    } catch {
+      setMessage("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
-
-    setMessage(
-      data.session
-        ? "Account created successfully!"
-        : "Account created! Please check your email to verify it."
-    );
   }
 
   return (
-    <div style={{ maxWidth: 400, margin: "60px auto", padding: 20 }}>
-      <h1>Create PaisaTrack Account</h1>
+    <div className="auth-page">
+      <div className="auth-brand-panel">
+        <Link to="/" className="brand auth-brand">
+          <span className="brand-icon">₹</span>
+          <span>PaisaTrack</span>
+        </Link>
 
-      <form onSubmit={handleSignup}>
-        <input
-          placeholder="Full name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
+        <div className="auth-brand-content">
+          <span className="auth-eyebrow">START YOUR JOURNEY</span>
+          <h1>
+            Your future
+            <br />
+            starts with <span>better habits.</span>
+          </h1>
+          <p>
+            Build a healthier relationship with money.
+            Organize your finances and make every decision count.
+          </p>
 
-        <br /><br />
+          <div className="auth-brand-bottom">
+            <span>✦</span> Simple. Organized. In control.
+          </div>
+        </div>
 
-        <input
-          type="email"
-          placeholder="Email address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <div className="auth-panel-decoration"></div>
+      </div>
 
-        <br /><br />
+      <div className="auth-form-panel">
+        <Link to="/" className="mobile-brand brand">
+          <span className="brand-icon">₹</span>
+          <span>PaisaTrack</span>
+        </Link>
 
-        <input
-          type="password"
-          placeholder="Password (minimum 8 characters)"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          minLength={8}
-          required
-        />
+        <div className="auth-form-container">
+          <div className="auth-form-heading">
+            <span className="auth-eyebrow">GET STARTED</span>
+            <h2>Create your account</h2>
+            <p>Join PaisaTrack and take control of your money.</p>
+          </div>
 
-        <br /><br />
+          <form onSubmit={handleSignup} className="auth-form">
+            <label htmlFor="signup-name">Full name</label>
+            <input
+              id="signup-name"
+              type="text"
+              placeholder="Enter your full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              autoComplete="name"
+              required
+            />
 
-        <button disabled={loading}>
-          {loading ? "Creating account..." : "Sign Up"}
-        </button>
-      </form>
+            <label htmlFor="signup-email">Email address</label>
+            <input
+              id="signup-email"
+              type="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+              required
+            />
 
-      {message && <p>{message}</p>}
+            <label htmlFor="signup-password">Password</label>
+
+            <div className="password-field">
+              <input
+                id="signup-password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Minimum 8 characters"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                minLength={8}
+                autoComplete="new-password"
+                required
+              />
+
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
+
+            <p className="password-hint">
+              Use at least 8 characters for your password.
+            </p>
+
+            {message && (
+              <div
+                className={`auth-message ${
+                  message.includes("successfully") ||
+                  message.includes("check your email")
+                    ? "auth-success"
+                    : "auth-error"
+                }`}
+                role="status"
+              >
+                {message}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="auth-submit"
+              disabled={loading}
+            >
+              {loading ? "Creating account..." : "Create Account"}
+              {!loading && <span>→</span>}
+            </button>
+          </form>
+
+          <p className="auth-switch">
+            Already have an account? <Link to="/login">Sign in</Link>
+          </p>
+
+          <Link to="/" className="auth-back-link">
+            ← Back to home
+          </Link>
+        </div>
+
+        <div className="auth-legal">
+          © 2026 PaisaTrack. Your money, in one place.
+        </div>
+      </div>
     </div>
   );
 }
