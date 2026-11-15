@@ -7,7 +7,7 @@
   width: 100%;
   min-height: 100px;
   padding: 20px 30px;
-  background: #ffffff;
+  background: #fff;
   border-bottom: 1px solid #edf0f5;
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@
   padding: 10px 12px;
   border: 1px solid #e5eaf1;
   border-radius: 9px;
-  background: white;
+  background: #fff;
   color: #26334a;
 }
 
@@ -90,11 +90,12 @@
   padding: 10px 14px;
   border: 1px solid #e5eaf1;
   border-radius: 9px;
-  background: white;
+  background: #fff;
   color: #475569;
   font-size: 12px;
   font-weight: 650;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .navbar-logout:hover {
@@ -102,10 +103,7 @@
   color: #dc4545;
 }
 
-/* =========================================
-   TABLET
-========================================= */
-
+/* TABLET */
 @media (max-width: 800px) {
   .app-navbar {
     align-items: flex-start;
@@ -120,46 +118,62 @@
   }
 }
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE - DESIGN 4 */
+/* DESIGN 4 - ONE CONTINUOUS DARK HEADER */
 
 @media (max-width: 650px) {
   .app-navbar {
     width: 100%;
-    min-width: 0;
     min-height: auto;
-    padding: 18px 14px;
-    gap: 15px;
-  }
+    padding: 18px 14px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
 
-  .navbar-welcome {
-    width: 100%;
+    background: #0f172a;
+    border-bottom: none;
   }
 
   .navbar-welcome h2 {
+    color: #ffffff;
     font-size: 19px;
+    margin-bottom: 5px;
   }
 
   .navbar-welcome p {
+    color: #94a3b8;
     font-size: 12px;
-    line-height: 1.5;
   }
 
   .navbar-actions {
     width: 100%;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-wrap: nowrap;
+    gap: 9px;
   }
 
   .navbar-month {
-    flex: 1 1 145px;
+    flex: 1;
+    min-width: 0;
+    padding: 11px 9px;
+    background: #1e293b;
+    color: #ffffff;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    font-size: 12px;
   }
 
   .navbar-profile {
-    margin-right: auto;
+    flex-shrink: 0;
+  }
+
+  .profile-avatar {
+    width: 38px;
+    height: 38px;
+    background: #263247;
+    color: #ffffff;
   }
 
   .profile-info {
@@ -168,22 +182,24 @@
 
   .navbar-logout {
     padding: 10px 12px;
+    background: #1e293b;
+    color: #ffffff;
+    border: 1px solid #334155;
+    border-radius: 9px;
+  }
+
+  .navbar-logout:hover {
+    background: #dc2626;
+    color: #ffffff;
   }
 }
-
-/* SMALL MOBILE */
-
 @media (max-width: 380px) {
   .app-navbar {
     padding: 15px 12px;
   }
 
-  .navbar-welcome h2 {
-    font-size: 18px;
-  }
-
   .navbar-actions {
-    gap: 9px;
+    gap: 7px;
   }
 
   .navbar-month {

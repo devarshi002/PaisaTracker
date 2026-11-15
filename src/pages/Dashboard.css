@@ -34,28 +34,48 @@
   margin: 0 auto;
 }
 
-/* =========================================
-   TABLET
-========================================= */
+/* ADD TRANSACTION BUTTON */
 
+.page-heading .primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #315fe8, #244bc5);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(49, 95, 232, 0.2);
+  transition: all 0.2s ease;
+}
+
+.page-heading .primary-button:hover {
+  background: #244bc5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(49, 95, 232, 0.25);
+}
+
+.page-heading .primary-button:active {
+  transform: scale(0.98);
+}
+
+/* TABLET */
 @media (max-width: 800px) {
   .dashboard-container {
     padding: 22px 18px;
   }
-
-  .main-content {
-    min-width: 0;
-  }
 }
 
-/* =========================================
-   MOBILE
-========================================= */
-
+/* MOBILE */
 @media (max-width: 650px) {
   .dashboard {
     width: 100%;
     min-width: 0;
+    overflow-x: hidden;
   }
 
   .app-shell {
@@ -81,7 +101,6 @@
     margin: 0;
   }
 
-  /* Page heading */
   .page-heading {
     display: flex;
     flex-direction: column;
@@ -89,17 +108,16 @@
     gap: 14px;
   }
 
-  .page-heading button {
+  .page-heading .primary-button {
     width: 100%;
+    min-height: 46px;
   }
 
-  /* Summary cards */
   .summary-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 12px;
   }
 
-  /* Analytics */
   .analytics-grid,
   .content-grid {
     display: grid;
@@ -107,23 +125,18 @@
     gap: 14px;
   }
 
-  /* Panels */
   .panel {
     width: 100%;
     min-width: 0;
     padding: 16px;
   }
 
-  /* Footer */
   .dashboard-footer {
     text-align: center;
   }
 }
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
+/* SMALL MOBILE */
 @media (max-width: 380px) {
   .dashboard-container {
     padding: 14px 10px;
@@ -139,39 +152,16 @@
 }
 
 
-
-/* Dashboard Add Transaction Button */
-
-.page-heading .primary-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 12px 22px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #315fe8, #244bc5);
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(49, 95, 232, 0.2);
-  transition: all 0.2s ease;
-}
-
-.page-heading .primary-button:hover {
-  background: #244bc5;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(49, 95, 232, 0.25);
-}
-
-.page-heading .primary-button:active {
-  transform: scale(0.98);
-}
-
 @media (max-width: 650px) {
-  .page-heading .primary-button {
-    width: 100%;
-    min-height: 46px;
+  .app-sidebar {
+    border-bottom: none;
+  }
+
+  .app-navbar {
+    margin-top: 0;
+  }
+
+  .dashboard-container {
+    padding-top: 22px;
   }
 }
