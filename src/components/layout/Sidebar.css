@@ -205,3 +205,31 @@
     font-size: 17px;
   }
 }
+
+
+
+/* MOBILE NAVIGATION POLISH */
+@media (max-width: 650px) {
+  .app-sidebar {
+    padding: 14px 13px 8px;
+  }
+
+  .sidebar-brand {
+    padding-bottom: 12px;
+  }
+
+  .sidebar-navigation {
+    gap: 7px;
+  }
+
+  .sidebar-link {
+    min-height: 43px;
+    padding: 9px 5px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .sidebar-link.active {
+    background: #315fe8;
+    box-shadow: 0 3px 10px rgba(49, 95, 232, 0.25);
+  }
+}

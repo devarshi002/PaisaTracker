@@ -125,11 +125,11 @@
   .app-navbar {
     width: 100%;
     min-height: auto;
-    padding: 18px 14px 20px;
+    padding: 12px 14px 17px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
+    gap: 12px;
 
     background: #0f172a;
     border-bottom: none;
@@ -137,7 +137,7 @@
 
   .navbar-welcome h2 {
     color: #ffffff;
-    font-size: 19px;
+    font-size: 18px;
     margin-bottom: 5px;
   }
 
@@ -151,7 +151,7 @@
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    gap: 9px;
+    gap: 8px;
   }
 
   .navbar-month {
