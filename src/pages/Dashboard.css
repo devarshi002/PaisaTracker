@@ -1,13 +1,16 @@
 
-/* Main application layout */
+/* =========================================
+   PAISATRACK DASHBOARD LAYOUT
+========================================= */
 
 .dashboard {
   width: 100%;
   min-height: 100vh;
-  padding: 0;
   margin: 0;
+  padding: 0;
   background: #f8fafc;
   color: #172033;
+  overflow-x: clip;
 }
 
 .app-shell {
@@ -19,7 +22,7 @@
 .main-content {
   flex: 1;
   min-width: 0;
-  width: auto;
+  width: calc(100% - 255px);
   min-height: 100vh;
   margin-left: 255px;
 }
@@ -29,4 +32,108 @@
   max-width: 1450px;
   padding: 30px;
   margin: 0 auto;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+  .dashboard-container {
+    padding: 22px 18px;
+  }
+
+  .main-content {
+    min-width: 0;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .dashboard {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .app-shell {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .main-content {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: auto;
+    margin-left: 0;
+  }
+
+  .dashboard-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 18px 14px;
+    margin: 0;
+  }
+
+  /* Page heading */
+  .page-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .page-heading button {
+    width: 100%;
+  }
+
+  /* Summary cards */
+  .summary-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  /* Analytics */
+  .analytics-grid,
+  .content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  /* Panels */
+  .panel {
+    width: 100%;
+    min-width: 0;
+    padding: 16px;
+  }
+
+  /* Footer */
+  .dashboard-footer {
+    text-align: center;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .dashboard-container {
+    padding: 14px 10px;
+  }
+
+  .page-heading h1 {
+    font-size: 21px;
+  }
+
+  .panel {
+    padding: 13px;
+  }
 }
