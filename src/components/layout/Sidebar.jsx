@@ -26,6 +26,11 @@ const navigation = [
     icon: "◷",
     href: "/budgets",
   },
+  {
+    label: "Savings Goals",
+    icon: "✦",
+    href: "/savings-goals",
+  },
 ];
 
 export default function Sidebar() {
@@ -45,11 +50,12 @@ export default function Sidebar() {
 
       <nav className="sidebar-navigation">
         {navigation.map((item) => {
-          const isActive = item.href === "/budgets"
-            ? location.pathname === "/budgets"
-            : location.pathname === "/dashboard" &&
+          const isActive = item.section
+            ? location.pathname === "/dashboard" &&
               (location.hash === `#${item.section}` ||
-                (!location.hash && item.section === "dashboard-overview"));
+                (!location.hash &&
+                  item.section === "dashboard-overview"))
+            : location.pathname === item.href;
 
           return (
             <NavLink

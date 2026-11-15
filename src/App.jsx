@@ -16,6 +16,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Budgets from "./pages/Budgets";
+import SavingsGoals from "./pages/SavingsGoals";
 
 import "./App.css";
 
@@ -290,6 +291,15 @@ export default function App() {
   element={
     <ProtectedRoute session={session} loading={loading}>
       <Budgets />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/savings-goals"
+  element={
+    <ProtectedRoute session={session} loading={loading}>
+      <SavingsGoals />
     </ProtectedRoute>
   }
 />
