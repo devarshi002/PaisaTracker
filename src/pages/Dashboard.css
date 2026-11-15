@@ -137,3 +137,41 @@
     padding: 13px;
   }
 }
+
+
+
+/* Dashboard Add Transaction Button */
+
+.page-heading .primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #315fe8, #244bc5);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(49, 95, 232, 0.2);
+  transition: all 0.2s ease;
+}
+
+.page-heading .primary-button:hover {
+  background: #244bc5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(49, 95, 232, 0.25);
+}
+
+.page-heading .primary-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 650px) {
+  .page-heading .primary-button {
+    width: 100%;
+    min-height: 46px;
+  }
+}

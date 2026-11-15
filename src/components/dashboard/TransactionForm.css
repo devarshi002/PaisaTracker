@@ -72,3 +72,37 @@
     padding: 16px;
   }
 }
+
+
+
+/* Save Transaction Button */
+.transaction-form .primary-button {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #315fe8, #244bc5);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(49, 95, 232, 0.18);
+  transition: all 0.2s ease;
+}
+
+.transaction-form .primary-button:hover {
+  background: #244bc5;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(49, 95, 232, 0.25);
+}
+
+.transaction-form .primary-button:active {
+  transform: scale(0.98);
+}
+
+.transaction-form .primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
